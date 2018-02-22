@@ -1,0 +1,27 @@
+<h1>Blue Horseshoe Funds</h1>
+<p>Stock Search results</p>
+<table cellpadding="8">
+    <thead> 
+        <th>Ticker</th> 
+        <th>Name</th>
+        <th>Business</th>
+        <th>Price</th> 
+        <th>EPS</th> 
+    </thead> 
+    <tbody align="center"> 
+        {{#each stockssearch}} 
+        <tr> 
+            <td>{{ticker}}</td>
+            <td>{{name}}</td> 
+            <td>{{business}}</td> 
+            <td>${{price}}</td>
+            <td>{{EPS}}</td>
+	    <td><button onclick="deleteStock({{id}})">Delete</button></td>
+        </tr> 
+        {{/each}} 
+    </tbody>
+</table>
+</br>
+
+<p>Click <a href="/stocks">here</a> to return to the stocks page.
+<p>Click <a href="/">here</a> to return to the main page.

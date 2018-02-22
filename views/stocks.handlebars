@@ -1,0 +1,62 @@
+<h1>Blue Horseshoe Funds</h1>
+<h2>Current Stocks Listed in the Database:</h1>
+{{#if stocks}}
+<table cellpadding="8">
+    <thead> 
+        <th>Ticker</th> 
+        <th>Name</th>
+        <th>Business</th>
+        <th>Price</th> 
+        <th>EPS</th> 
+    </thead> 
+    <tbody align="center"> 
+        {{#each stocks}} 
+        <tr> 
+            <td>{{ticker}}</td>
+            <td>{{name}}</td> 
+            <td>{{business}}</td> 
+            <td>${{price}}</td>
+            <td>{{EPS}}</td>
+	    <td><button onclick="deleteStock({{id}})">Delete</button></td>
+        </tr> 
+        {{/each}} 
+    </tbody>
+</br>
+
+<form id="addstock" action="/stocks" method="post">
+  <fieldset>
+  <legend><strong>Add a Stock</strong></legend>
+    Ticker: <input type="text" name="ticker" required><br>
+    Name: <input type="text" name="name"><br>
+    Business: <input type="text" name="business"><br>
+    Price: <input step="any" type="number" name="price"></br> 
+    EPS: <input step="any" type="number" name="EPS"><br>	
+    <input type="submit" value="Submit">
+  </fieldset>
+</form>
+
+<br>
+
+<form id="searchStocks" action="/stocks/search" method="GET">
+  <fieldset>
+  <legend><strong>Search stocks by EPS or Price</legend>
+  <p>Search stocks where <select name="sel"> 
+        <option value="price" selected="selected">Price</option>
+        <option value="eps">EPS</option>
+        </select>
+        is greater than
+        <input type="number" name="userval">
+        
+        <input type="submit" value="Submit">
+ </fieldset>
+ </form>
+<h2>Current Stocks Listed in the Database:</h2>
+</table>  
+{{else}}
+<p>No funds currently this stock</p>
+{{/if}}
+<br>
+
+
+
+<p>Click <a href="/">here</a> to return to the main page.

@@ -1,0 +1,22 @@
+<h1>Update {{pmanager.fname}} {{pmanager.lname}}:</h1>
+<form id="update-pmanager" action="/pmanagers" method="post">
+    First name: <input type="text" name="fname" value="{{pmanager.fname}}"><br>
+    Last name: <input type="text" name="lname" value="{{pmanager.lname}}"><br>
+    Fund managed: <select name="fund_managed" id="fund-selector"> 
+        <option value="null">None</option>
+	{{#each funds}}
+        <option value="{{id}}">{{name}}</option>
+        {{/each}}
+    </select><br>
+    Years of service: <input type="number" name="years_of_service" value="{{pmanager.years_of_service}}"><br>
+    College: <input type="text" name="college" value="{{pmanager.college}}"></br>
+    Reports to: <select name="reports_to" id="exec-selector">	
+	<option value="null">None</option>
+	{{#each executives}}
+	<option value="{{id}}">{{exec_name}}</option>
+	{{/each}}
+	</select></br>
+</form>
+<button onclick="updatePManager({{pmanager.id}})">Update</button>
+<script defer>selectFund({{pmanager.fund_managed}});</script>
+<script defer>selectExec({{pmanager.reports_to}});</script>

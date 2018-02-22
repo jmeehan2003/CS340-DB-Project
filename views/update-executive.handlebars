@@ -1,0 +1,9 @@
+<h1>Update {{executive.fname}} {{executive.lname}}:</h1>
+<form id="update-executive" action="/executives" method="post">
+    First name: <input type="text" name="fname" value="{{executive.fname}}"><br>
+    Last name: <input type="text" name="lname" value="{{executive.lname}}"><br>
+    Years with Company:  <input type="number" name="years_service" value="{{executive.years_service}}"></br>
+    Age: <input type="number" name="age" value="{{executive.age}}"><br>
+    Title: <input type'"text" name="title" value="{{executive.title}}"></br>
+</form>
+<button onclick="updateExecutive({{executive.id}})">Update</button>

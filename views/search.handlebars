@@ -1,0 +1,20 @@
+<h1>Blue Horseshoe Funds</h1>
+<h1>Search Results</h1>
+
+<table cellpadding="8">
+	<thead>
+	<th>Name</th>
+	<th>Category</th>
+	</thead>
+	<tbody align="center">
+		{{#each search}}
+		<tr>
+			<td>{{Name}}</td>
+			<td>{{category}}</td>
+			<td><a href="/{{category}}"><button>See Full Table</button></a>
+		</tr>
+		{{/each}}
+	</tbody>
+</table>
+<br>
+Click <a href="/">here</a> to return to the main page.

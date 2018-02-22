@@ -1,0 +1,59 @@
+<h1>Blue Horseshoe Funds<h1>
+
+<h3>Stocks owned by {{fund.name}} mutual fund:</h3>
+
+<table cellpadding="8">
+	 <thead> 
+        <th>Ticker</th> 
+        <th>Name</th>
+        <th>Business</th>
+        <th>Price</th> 
+        <th>EPS</th> 
+    </thead> 
+    <tbody align="center">
+        {{#each holdings}} 
+        <tr> 
+            <td>{{ticker}}</td>
+            <td>{{name}}</td> 
+            <td>{{business}}</td> 
+            <td>{{price}}</td>
+            <td>{{EPS}}</td>
+            <td><button onclick="deleteHolding({{fid}},{{sid}})">Sell Stock</button></td>
+        </tr> 
+        {{/each}}
+    </tbody><br>
+
+    <form id="addHolding" action="/holdings" method="POST">
+    <fieldset>
+    <legend>Got a HOT stock tip? Buy it for the fund!</legend>
+    <input type="hidden" name="fundid" value={{fund.id}}>    
+    Purchase stock: <select name="sid">
+    <option value="select" selected="selected" disabled="disabled">Select Stock</option> 
+    {{#each stocks}}
+    <option value={{sid}}>{{name}}</option>
+    {{/each}}   
+    </select>
+    </label>
+    <span>for {{fund.name}}</span>
+    <input type="submit" value="Buy Now">
+    </fieldset>
+</form>
+<p>Current Stock Holdings:</p>
+</table>     
+</br>
+<form action="/holdings" method="GET">
+<fieldset>
+  <legend>Want to see what another fund holds?</legend>
+   Stock: <select name="fund">
+   <option value="select" selected="selected" disabled="disabled">Select Fund</option>
+   {{#each fundsall}}
+    <option value={{id}}">{{name}}</option>
+   {{/each}}
+   </select>
+   <input type="submit" value="Submit">
+ </fieldset>
+</form>
+<br>
+
+
+<p>Click <a href="/">here</a> to return to the main page.</p>

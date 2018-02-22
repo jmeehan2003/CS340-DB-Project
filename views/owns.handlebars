@@ -1,0 +1,36 @@
+<h1>Blue Horseshoe Funds</h1>
+
+<h2>Current fund ownership of {{stock.name}}:</h2>
+
+<table cellpadding="8">
+    <thead> 
+        <th>Fund Name</th> 
+    </thead> 
+    <tbody align="center">
+        {{#each owns}} 
+        <tr> 
+            <td>{{fname}}</td>
+        </tr> 
+        {{/each}}
+    </tbody><br>
+
+</form>
+</table>     
+</br>
+<p>To add or remove stocks from a fund please navigate to the fund holdings section on the main page</p>
+
+<form action="/owns" method="GET">
+<fieldset>
+  <legend>Want to see what funds own a different stock?</legend>
+   Stock: <select name="owns">
+   <option value="">Select Stock</option>
+   {{#each stocksall}}
+	<option value={{id}}">{{name}}</option>
+   {{/each}}
+   </select>
+   <input type="submit" value="Submit">
+ </fieldset>
+</form>
+<br>
+
+<p>Click <a href="/">here</a> to return to the main page.</p>

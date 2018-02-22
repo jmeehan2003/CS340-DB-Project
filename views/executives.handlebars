@@ -1,0 +1,40 @@
+<h1>Blue Horseshoe Fund</h1>
+
+
+<table cellpadding="8">
+    <thead> 
+        <th>First Name</th> 
+        <th>Last Name</th> 
+        <th>Years w/ Company</th>
+        <th>Age</th>
+        <th>Title</th>  
+    </thead> 
+    <tbody align="center"> 
+        {{#each executives}} 
+        <tr> 
+            <td>{{fname}}</td> 
+            <td>{{lname}}</td> 
+            <td>{{years_service}}</td> 
+            <td>{{age}}</td>
+            <td>{{title}}</td>
+            <td><button onclick="deleteExecutive({{id}})">Delete</button></td>
+    	    <td><button><a href="/executives/{{id}}">Update</a></button></td>
+        </tr> 
+        {{/each}} 
+    </tbody>
+
+<form id="addexecutive" action="/executives" method="post">
+<fieldset>
+<legend><strong>Add an Executive</strong></legend>
+    First name: <input type="text" name="fname" required><br>
+    Last name: <input type="text" name="lname" required><br>
+    Years with company: <input type="number" name="years_service"><br>
+    Age: <input type="number" name="age"><br>
+    Title: <input type="text" name="title"><br>
+    <input type="submit" value="Submit">
+</fieldset>
+</form>
+<h2>Current Executives: </h2>
+</table>  
+
+<p>Click <a href="/">here</a> to return to the main page.

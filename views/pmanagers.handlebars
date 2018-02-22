@@ -1,0 +1,88 @@
+<h1>Blue Horseshoe Funds</h1>
+
+<table cellpadding="8" text-align="center" >
+    <thead> 
+        <th>First Name</th> 
+        <th>Last Name</th> 
+        <th>Fund Managed</th>
+        <th>Years w/ Company</th>
+        <th>College</th> 
+	<th>Reports To</th> 
+    </thead> 
+    <tbody align="center"> 
+        {{#each pmanagers}} 
+        <tr> 
+            <td>{{fname}}</td> 
+            <td>{{lname}}</td> 
+            <td>{{fund_managed}}</td> 
+            <td>{{years_of_service}}</td>
+            <td>{{college}}</td>
+	    <td>{{reports_to}}</td>
+            <td><button onclick="deletePManager({{id}})">Delete</button></td>
+            <td><button><a href="/portfolio_managers/{{id}}">Update</a></button></td>
+        </tr> 
+        {{/each}} 
+    </tbody>
+
+<form id="addperson" action="/portfolio_managers" method="post">
+  <fieldset>
+  <legend><strong>Add a Portfolio Manager</strong></legend>
+    First name: <input type="text" name="fname" required><br>
+    Last name: <input type="text" name="lname" required><br>
+    Fund managed: <select name="fund_managed"> 
+        {{#each funds}}
+        <option value="{{id}}">{{name}}</option>
+        {{/each}}
+	<option value="null">None</option>
+    </select><br>
+    Years with company: <input type="number" name="years_of_service"><br>
+    College: <input type="text" name="college"><br>
+    Reports to: <select name="reports_to">
+	{{#each executives}}
+	<option value="{{id}}">{{exec_name}}</option>
+	{{/each}}
+	<option value="null">None</option>
+    </select></br>	
+    <input type="submit" value="Submit">
+   </fieldset>
+</form>
+
+
+<h2>Current Portfolio Managers: </h2>
+<p>Scroll to the bottom of the table to search Portfolio Managers by fund or boss</p>
+</table>
+<br>
+<form id="searchPMfund" action="/portfolio_managers/indv" method="GET">
+  <fieldset>
+  <strong>
+  <p>Search portfolio managers by <select name="fund_managed"> 
+        <option value="select" selected="selected" disabled="disabled">Fund</option>
+        {{#each funds}}
+        <option value="{{id}}">{{name}}</option>
+        {{/each}} 
+        </select></strong></p>
+        <input type="submit" value="Submit">
+ </fieldset>
+</form>
+
+<br>
+
+ <form id="searchPMboss" action="/portfolio_managers/indv" method="POST">
+  <fieldset>
+  <strong>
+  <p>Search portfolio managers by <select name="reports_to"> 
+        <option value="select" selected="selected" disabled="disabled">Boss</option>
+       {{#each executives}}
+    <option value="{{id}}">{{exec_name}}</option>
+    {{/each}}
+    </select></br></strong></p>
+    <input type="submit" value="Submit">
+ </fieldset>
+ </form>   
+
+
+
+
+
+<p>Click <a href="/">here</a> to return to the main page</p>  
+<br>

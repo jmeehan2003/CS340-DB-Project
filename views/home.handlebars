@@ -1,0 +1,67 @@
+<div align="center">
+<div id="nav" style="text-align: center" style="margin: 2em">
+ <ul>
+	<li style="display:inline-block"><button><a href='/'>Home</a></button></li>
+	<li style="display:inline-block"><button><a href='executives'>Executives</a></button></li>
+	<li style="display:inline-block"><button><a href='portfolio_managers'>Portfolio Managers</a></button></li>
+	<li style="display:inline-block"><button><a href='funds'>Mutual Funds</a></button></li>
+	<li style="display:inline-block"><button><a href='styles'>Styles</a></button></li>
+	<li style="display:inline-block"><button><a href='stocks'>Stocks</a></button></li>
+ </ul>
+</div>
+
+<h1 id="hometitle"><font color="blue">Welcome to the Blue Horseshore Funds Database</font></h1>
+<h3 id="mississippi"><em>The Best Asset Managers this Side of the Mississippi!</em></h3>
+<p><strong>We currently have <font color="green">${{data.sum}}</font> invested across {{data.count}} funds.</p> 
+
+<br>
+
+<p>Search for an executive, portfolio manager, fund, style or stock by name</p>
+<form id="searchFull" action="/search" method="GET">
+<input type="text" id="searchReq" name="name">
+<input id="searchSubmit" type="submit" value="submit">
+</form>
+</strong>
+<br>
+
+<p><strong>Select an option from the dropdown box to see everything in the selected category:</strong></p>
+<p>You'll find more specific search options in the Portfolio Managers and Stocks sections</p>
+<div> 
+    <select ONCHANGE="window.location.href=this.value" name="chooseTable">
+    <option value="/" selected="selected" disabled="disabled">Select Table</option>
+    <option value="/executives">Executives</option>
+    <option value="/portfolio_managers">Portfolio Managers</option>
+    <option value="/funds">Mutual Funds</option>
+    <option value="/styles">Fund Styles</option>
+    <option value="/stocks">Stocks</option>
+    </select>
+</div>
+<br>
+
+<p><strong>Check out specific fund holdings</strong></p>
+<div>
+<form id="holdings" action="/holdings" method="GET">
+Fund: <select name="fund">
+        <option value="select" selected="selected" disabled="disabled">Select Fund</option>
+	{{#each funds}}
+	<option value="{{id}}">{{name}}</option>
+	{{/each}}
+	</select>
+<input type="submit" value="Submit">
+</form>
+</div>
+
+<br>
+
+<p><strong>View which funds hold a specific stock</strong></p>
+<form id="owns" action="/owns" method="GET">
+Stock: <select name="owns">
+	<option value="select" selected="selected" disabled="disabled">Select Stock</option>
+	{{#each stocks}}
+	<option value="{{id}}">{{name}}</option>
+	{{/each}}
+	</select>
+<input type="submit" value="Submit">
+</form>
+</div>
+

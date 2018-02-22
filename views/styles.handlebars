@@ -1,0 +1,42 @@
+<h1>Blue Horseshoe Funds</h1>
+<h1>Mutual Fund Styles: </h1>
+
+<table cellpadding="8">
+    <thead> 
+        <th>Category</th> 
+        <th>Region</th>
+        <th>Risk Tolerance</th> 
+    </thead> 
+    <tbody align="center"> 
+        {{#each styles}} 
+        <tr> 
+            <td>{{category}}</td> 
+            <td>{{region}}</td> 
+            <td>{{risk_tolerance}}</td>
+            <td><button onclick="deleteStyle({{id}})">Delete</button></td>
+        </tr> 
+        {{/each}} 
+    </tbody>
+</br>
+
+<form id="addstyle" action="/styles" method="post">
+    <fieldset>
+    <legend><strong>Add a Style</strong></legend>	
+    Category: <input type="text" name="category" required><br>
+    Region: <input type="text" name="region"><br>
+    Risk_Tolerance: <select name="risk_tolerance"> 
+        <option value="Speculative">Speculative</option>
+        <option value="High">High</option>
+	<option value="Above Average">Above Average</option>
+        <option value="Average">Average</option>
+        <option value="Below Average">Below Average</option>
+        <option value="Low">Conservative</option>
+        <option value="Super Duper Safe">Super Duper Safe</option>
+        <option value="null">None</option>
+    </select><br>
+    <input type="submit" value="Submit">
+    </fieldset>    
+</form>
+</table>  
+</br>
+<p>Click <a href="/">here</a> to return to the main page.</p>

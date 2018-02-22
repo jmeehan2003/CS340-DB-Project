@@ -1,0 +1,32 @@
+<h1>Blue Horseshoe Funds</h1>
+
+<h3>Portfolio Managers {{#if fund}} managing fund: {{fund.name}}{{else}}reporting to:{{boss.name}}{{/if}}</h3> 
+
+
+<table cellpadding="8">
+    <thead> 
+        <th>First Name</th> 
+        <th>Last Name</th> 
+        <th>Fund Managed</th>
+        <th>Years w/ Company</th>
+        <th>College</th> 
+	    <th>Reports To</th> 
+    </thead> 
+    <tbody align="center"> 
+        {{#each pmanagerindv}} 
+        <tr> 
+            <td>{{fname}}</td> 
+            <td>{{lname}}</td> 
+            <td>{{fund_managed}}</td> 
+            <td>{{years_of_service}}</td>
+            <td>{{college}}</td>
+	        <td>{{reports_to}}</td>
+            <td><button onclick="deletePManager({{id}})">Delete</button></td>
+            <td><button><a href="/portfolio_managers/{{id}}">Update</a></button></td>
+        </tr> 
+        {{/each}} 
+    </tbody>
+</table>
+<br>
+<p>Click <a href="/portfolio_managers">here</a> to return to the Portfolio Managers page.</p>
+<p>Click <a href="/"> here</a> to return to the main page.</p>

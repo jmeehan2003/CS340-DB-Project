@@ -1,0 +1,41 @@
+<h1>Blue Horseshoe Funds</h1>
+
+<table cellpadding="8">
+    <thead> 
+        <th>Name</th> 
+        <th>Style</th>
+        <th>Inception Date</th>
+        <th>Amount Invested</th> 
+    </thead> 
+    <tbody align="center"> 
+        {{#each funds}} 
+        <tr> 
+            <td>{{name}}</td> 
+            <td>{{style}}</td> 
+            <td>{{date}}</td>
+            <td>{{amount_invested}}</td>
+	    <td><button onclick="deleteFund({{id}})">Delete</button></td>
+        </tr> 
+        {{/each}} 
+    </tbody>
+</br>
+
+<form id="addfund" action="/funds" method="post">
+   <fieldset>
+   <legend><strong>Add a Mutual Fund</strong></legend>
+    Name: <input type="text" name="name" required><br>
+    Style: <select name="style"> 
+        {{#each styles}}
+        <option value="{{id}}">{{category}}</option>
+        {{/each}}
+    <option value="null">None</option>
+    </select><br>
+    Inception date: <input id="date" type="date" name="inception_date"></br> 
+    Amount invested: <input type="number" name="amount_invested"><br>
+    <input type="submit" value="Submit">
+    </fieldset>
+</form>
+ <h2>Current Mutual Funds being offered:</h2>
+</table> 
+
+<p> Click <a href="/">here</a> to return to the main page. 
